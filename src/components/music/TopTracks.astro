@@ -1,0 +1,16 @@
+---
+import TrackCard from './TrackCard.astro';
+import type { LastFmTrack } from '../../lib/lastfm';
+
+interface Props {
+  tracks: LastFmTrack[];
+}
+
+const { tracks } = Astro.props;
+---
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  {tracks.map((track) => (
+    <TrackCard track={track} />
+  ))}
+</div>

@@ -1,37 +1,15 @@
 ---
 import Layout from '../components/ui/Layout.astro';
+import MusicStats from '../components/music/MusicStats.astro';
 ---
 
 <Layout title="Music | Rowan">
-  <main class="container py-8">
+  <main class="max-w-6xl mx-auto px-4 py-8">
     <h1 class="text-4xl font-bold mb-4">Music</h1>
     <p class="text-gray-600 mb-8">
       What I've been listening to lately
     </p>
     
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">Now Playing</h2>
-      <div class="bg-gray-100 rounded-lg p-8 text-center text-gray-500">
-        Loading now playing...
-      </div>
-    </section>
-    
-    <section class="mb-12">
-      <h2 class="text-2xl font-semibold mb-4">Top Tracks</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-gray-100 rounded-lg p-8 text-center text-gray-500">
-          Loading tracks...
-        </div>
-      </div>
-    </section>
-    
-    <section>
-      <h2 class="text-2xl font-semibold mb-4">Top Artists</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="bg-gray-100 rounded-lg p-8 text-center text-gray-500">
-          Loading artists...
-        </div>
-      </div>
-    </section>
+    <MusicStats client:load />
   </main>
 </Layout>

@@ -1,7 +1,7 @@
-import { c as createComponent } from './astro-component_CAtTQstT.mjs';
+import { c as createComponent } from './astro-component_CM2WGPh_.mjs';
 import 'piccolore';
-import { l as renderComponent, r as renderTemplate, m as maybeRenderHead } from './entrypoint_mxYNU8JZ.mjs';
-import { $ as $$Layout } from './Layout_BgzdrRcD.mjs';
+import { l as renderComponent, r as renderTemplate, m as maybeRenderHead } from './entrypoint_D27yDQgx.mjs';
+import { $ as $$Layout } from './Layout_BUZMFOna.mjs';
 
 const $$About = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "About | Rowan" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="container py-8"> <div class="max-w-3xl mx-auto"> <h1 class="text-4xl font-bold mb-8">About</h1> <div class="flex flex-col md:flex-row gap-8 items-center md:items-start"> <div class="w-48 h-48 rounded-full bg-gray-200 flex-shrink-0 flex items-center justify-center"> <span class="text-gray-400 text-sm">Photo</span> </div> <div> <h2 class="text-2xl font-semibold mb-4">Rowan</h2> <p class="text-gray-600 mb-6">

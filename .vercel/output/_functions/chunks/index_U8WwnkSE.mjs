@@ -1,7 +1,7 @@
-import { c as createComponent } from './astro-component_CAtTQstT.mjs';
+import { c as createComponent } from './astro-component_CM2WGPh_.mjs';
 import 'piccolore';
-import { l as renderComponent, r as renderTemplate, m as maybeRenderHead } from './entrypoint_mxYNU8JZ.mjs';
-import { $ as $$Layout } from './Layout_BgzdrRcD.mjs';
+import { l as renderComponent, r as renderTemplate, m as maybeRenderHead } from './entrypoint_D27yDQgx.mjs';
+import { $ as $$Layout } from './Layout_BUZMFOna.mjs';
 
 const $$Index = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Rowan" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main> <section class="pt-16 pb-12"> <div class="max-w-6xl mx-auto px-4"> <div class="max-w-3xl mx-auto text-center"> <h1 class="text-5xl md:text-7xl font-bold mb-4">

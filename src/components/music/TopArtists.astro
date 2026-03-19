@@ -1,0 +1,16 @@
+---
+import ArtistCard from './ArtistCard.astro';
+import type { LastFmArtist } from '../../lib/lastfm';
+
+interface Props {
+  artists: LastFmArtist[];
+}
+
+const { artists } = Astro.props;
+---
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  {artists.map((artist) => (
+    <ArtistCard artist={artist} />
+  ))}
+</div>

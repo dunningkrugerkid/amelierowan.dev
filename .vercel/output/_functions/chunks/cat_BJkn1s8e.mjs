@@ -1,7 +1,7 @@
-import { c as createComponent } from './astro-component_CAtTQstT.mjs';
+import { c as createComponent } from './astro-component_CM2WGPh_.mjs';
 import 'piccolore';
-import { l as renderComponent, r as renderTemplate, m as maybeRenderHead } from './entrypoint_mxYNU8JZ.mjs';
-import { $ as $$Layout } from './Layout_BgzdrRcD.mjs';
+import { l as renderComponent, r as renderTemplate, m as maybeRenderHead } from './entrypoint_D27yDQgx.mjs';
+import { $ as $$Layout } from './Layout_BUZMFOna.mjs';
 
 const $$Cat = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "My Cat | Rowan" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="container py-8"> <h1 class="text-4xl font-bold mb-4">My Cat</h1> <p class="text-gray-600 mb-8">
