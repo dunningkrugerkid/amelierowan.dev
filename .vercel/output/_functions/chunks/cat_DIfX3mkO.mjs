@@ -1,7 +1,7 @@
-import { c as createComponent } from './astro-component_DNz8mnJs.mjs';
+import { c as createComponent } from './astro-component_CwGRRlTM.mjs';
 import 'piccolore';
-import { m as maybeRenderHead, h as addAttribute, r as renderTemplate, l as renderComponent } from './entrypoint_D0U7yOda.mjs';
-import { $ as $$Layout } from './Layout_CLlpX-vA.mjs';
+import { m as maybeRenderHead, h as addAttribute, r as renderTemplate, l as renderComponent } from './entrypoint_R69GC1JZ.mjs';
+import { $ as $$Layout } from './Layout_BDSe6moL.mjs';
 import 'clsx';
 
 const $$CatGallery = createComponent(($$result, $$props, $$slots) => {

@@ -15,27 +15,14 @@ import Layout from '../components/ui/Layout.astro';
           </p>
           <div class="flex gap-4 justify-center flex-wrap">
             <a href="/music" class="px-6 py-3 rounded-lg font-medium bg-pink-400 text-white hover:bg-pink-500 transition-colors shadow-sm">
-              Music
+              music
             </a>
             <a href="/cat" class="px-6 py-3 rounded-lg font-medium bg-white text-gray-700 hover:bg-pink-50 border border-pink-200 transition-colors">
-              My Cat
+              my cat
             </a>
             <a href="/about" class="px-6 py-3 rounded-lg font-medium bg-white text-gray-700 hover:bg-pink-50 border border-pink-200 transition-colors">
-              About
+              about
             </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="max-w-6xl mx-auto px-4 py-12">
-      <h2 class="text-2xl font-semibold mb-6 text-gray-800">now playing</h2>
-      <div id="now-playing-container" class="bg-white rounded-lg p-6 shadow-sm border border-pink-100">
-        <div class="animate-pulse flex flex-col md:flex-row gap-6 items-center">
-          <div class="w-32 h-32 bg-pink-100 rounded flex-shrink-0"></div>
-          <div class="flex-1">
-            <div class="h-6 bg-pink-100 rounded w-3/4 mb-2"></div>
-            <div class="h-4 bg-pink-100 rounded w-1/2"></div>
           </div>
         </div>
       </div>
@@ -46,7 +33,7 @@ import Layout from '../components/ui/Layout.astro';
       <div class="grid md:grid-cols-3 gap-6">
         <a href="/music" class="block p-6 rounded-lg bg-white hover:bg-pink-50 transition-colors border border-pink-100 shadow-sm">
           <h3 class="font-semibold mb-2 text-gray-800">music</h3>
-          <p class="text-gray-600">what i've been listening to</p>
+          <p class="text-gray-600">albums and songs i love</p>
         </a>
         <a href="/cat" class="block p-6 rounded-lg bg-white hover:bg-pink-50 transition-colors border border-pink-100 shadow-sm">
           <h3 class="font-semibold mb-2 text-gray-800">my cat</h3>
@@ -60,53 +47,3 @@ import Layout from '../components/ui/Layout.astro';
     </section>
   </main>
 </Layout>
-
-<script>
-  async function fetchNowPlaying() {
-    try {
-      const response = await fetch('/api/now-playing');
-      const data = await response.json();
-
-      const container = document.getElementById('now-playing-container');
-      if (!container) return;
-
-      if (data.error) {
-        container.innerHTML = '<p class="text-gray-500 text-center">Unable to load now playing</p>';
-        return;
-      }
-
-      if (data.source === 'none') {
-        container.innerHTML = '<p class="text-gray-500 text-center">No music playing recently</p>';
-        return;
-      }
-
-      container.innerHTML = `
-        <div class="flex flex-col md:flex-row gap-6 items-center">
-          ${data.artwork
-            ? `<img src="${data.artwork}" alt="${data.title}" class="w-32 h-32 rounded object-cover flex-shrink-0 shadow-sm" loading="lazy" />`
-            : '<div class="w-32 h-32 bg-pink-100 rounded flex items-center justify-center flex-shrink-0"><span class="text-pink-300 text-sm">No art</span></div>'
-          }
-          <div class="flex-1 text-center md:text-left">
-            <h3 class="text-xl font-semibold mb-1 text-gray-800">
-              ${data.url
-                ? `<a href="${data.url}" target="_blank" rel="noopener noreferrer" class="hover:text-pink-500 transition-colors">${data.title}</a>`
-                : data.title
-              }
-            </h3>
-            <p class="text-gray-600">${data.artist}</p>
-            ${data.album ? `<p class="text-gray-500 text-sm">${data.album}</p>` : ''}
-            ${data.isPlaying
-              ? '<span class="inline-flex items-center gap-1 mt-2 text-sm text-white bg-pink-400 px-2 py-1 rounded"><span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>Now Playing</span>'
-              : ''
-            }
-          </div>
-        </div>
-      `;
-    } catch (error) {
-      console.error('Error fetching now playing:', error);
-    }
-  }
-
-  fetchNowPlaying();
-  setInterval(fetchNowPlaying, 30000);
-</script>
