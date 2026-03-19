@@ -1,8 +1,8 @@
-import { c as createComponent } from './astro-component_DfX6KPoh.mjs';
+import { c as createComponent } from './astro-component_DNz8mnJs.mjs';
 import 'piccolore';
-import { l as renderComponent, r as renderTemplate, m as maybeRenderHead } from './entrypoint_D7DLjsAF.mjs';
-import { r as renderScript } from './script_jlZoKnuA.mjs';
-import { $ as $$Layout } from './Layout_DMnWiYgO.mjs';
+import { l as renderComponent, r as renderTemplate, m as maybeRenderHead } from './entrypoint_D0U7yOda.mjs';
+import { r as renderScript } from './script_wLrYB3ql.mjs';
+import { $ as $$Layout } from './Layout_CLlpX-vA.mjs';
 
 const $$Index = createComponent(async ($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "rowan" }, { "default": async ($$result2) => renderTemplate` ${maybeRenderHead()}<main> <section class="pt-16 pb-12 bg-gradient-to-b from-pink-100 to-pink-50"> <div class="max-w-6xl mx-auto px-4"> <div class="max-w-3xl mx-auto text-center"> <h1 class="text-5xl md:text-7xl font-bold mb-4 text-gray-800">

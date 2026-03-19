@@ -1,27 +1,24 @@
 ---
-import NowPlaying from './NowPlaying.astro';
 ---
 
 <div class="space-y-12">
   <section>
     <h2 class="text-2xl font-semibold mb-4 text-gray-800">now playing</h2>
-    <div id="now-playing-container">
-      <NowPlaying loading />
+    <div id="now-playing-container" class="bg-white border border-pink-100 rounded-lg p-6">
+      <div class="animate-pulse flex flex-col md:flex-row gap-6 items-center">
+        <div class="w-32 h-32 bg-pink-100 rounded flex-shrink-0"></div>
+        <div class="flex-1">
+          <div class="h-6 bg-pink-100 rounded w-3/4 mb-2"></div>
+          <div class="h-4 bg-pink-100 rounded w-1/2"></div>
+        </div>
+      </div>
     </div>
+    <p class="text-gray-500 text-sm mt-2">shows what's playing on my mac</p>
   </section>
 
   <section>
-    <h2 class="text-2xl font-semibold mb-4 text-gray-800">top tracks <span class="text-sm font-normal text-pink-400">(7 days)</span></h2>
-    <div id="top-tracks-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div class="bg-pink-50 border border-pink-100 rounded-lg p-8 text-center text-gray-500 col-span-full animate-pulse">loading...</div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="text-2xl font-semibold mb-4 text-gray-800">top artists <span class="text-sm font-normal text-pink-400">(7 days)</span></h2>
-    <div id="top-artists-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div class="bg-pink-50 border border-pink-100 rounded-lg p-8 text-center text-gray-500 col-span-full animate-pulse">loading...</div>
-    </div>
+    <h2 class="text-2xl font-semibold mb-4 text-gray-800">current favorites</h2>
+    <p class="text-gray-600">check back later for my favorite albums :3</p>
   </section>
 </div>
 
@@ -34,38 +31,26 @@ import NowPlaying from './NowPlaying.astro';
       const container = document.getElementById('now-playing-container');
       if (!container) return;
 
-      if (data.error) {
+      if (data.error || data.source === 'none') {
         container.innerHTML = `
           <div class="bg-pink-50 border border-pink-200 rounded-lg p-6 text-center">
-            <p class="text-gray-600">couldn't load music data</p>
-            <p class="text-gray-500 text-sm mt-2">make sure you've connected your music player to last.fm</p>
-          </div>
-        `;
-        return;
-      }
-
-      if (data.source === 'none') {
-        container.innerHTML = `
-          <div class="bg-pink-50 border border-pink-200 rounded-lg p-6 text-center">
-            <p class="text-gray-600">no music playing recently</p>
-            <p class="text-gray-500 text-sm mt-2">start listening to something!</p>
+            <p class="text-gray-600">nothing playing right now</p>
+            <p class="text-gray-500 text-sm mt-2">open music app on my mac</p>
           </div>
         `;
         return;
       }
 
       container.innerHTML = `
-        <div class="bg-white border border-pink-100 rounded-lg p-6 flex flex-col md:flex-row gap-6 items-center shadow-sm">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
           ${data.artwork
             ? `<img src="${data.artwork}" alt="${data.title}" class="w-32 h-32 rounded object-cover flex-shrink-0 shadow-sm" loading="lazy" />`
-            : '<div class="w-32 h-32 bg-pink-100 rounded flex items-center justify-center flex-shrink-0"><span class="text-pink-300 text-sm">no art</span></div>'
+            : '<div class="w-32 h-32 bg-pink-100 rounded flex items-center justify-center flex-shrink-0"><span class="text-pink-300 text-3xl">♪</span></div>'
           }
           <div class="flex-1 text-center md:text-left">
-            <h3 class="text-xl font-semibold mb-1 text-gray-800">
-              <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="hover:text-pink-500 transition-colors">${data.title}</a>
-            </h3>
-            <p class="text-gray-600">${data.artist}</p>
-            ${data.album ? `<p class="text-gray-500 text-sm">${data.album}</p>` : ''}
+            <h3 class="text-xl font-semibold mb-1 text-gray-800 lowercase">${data.title}</h3>
+            <p class="text-gray-600 lowercase">${data.artist}</p>
+            ${data.album ? `<p class="text-gray-500 text-sm lowercase">${data.album}</p>` : ''}
             ${data.isPlaying
               ? '<span class="inline-flex items-center gap-1 mt-2 text-sm text-white bg-pink-400 px-2 py-1 rounded"><span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>now playing</span>'
               : ''
@@ -78,94 +63,6 @@ import NowPlaying from './NowPlaying.astro';
     }
   }
 
-  async function fetchTopTracks() {
-    try {
-      const response = await fetch('/api/top-tracks?limit=12&period=7day');
-      const tracks = await response.json();
-
-      const container = document.getElementById('top-tracks-container');
-      if (!container || !Array.isArray(tracks)) return;
-
-      if (tracks.length === 0) {
-        container.innerHTML = `
-          <div class="bg-pink-50 border border-pink-200 rounded-lg p-8 text-center col-span-full">
-            <p class="text-gray-600">no tracks yet</p>
-            <p class="text-gray-500 text-sm mt-2">listen to some music and it'll show up here!</p>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = tracks
-        .map((track) => {
-          const artwork = track.image[2]?.['#text'] || track.image[1]?.['#text'] || '';
-          const playcount = track.playcount ? parseInt(track.playcount).toLocaleString() : '';
-          return `
-            <a href="${track.url}" target="_blank" rel="noopener noreferrer" class="block bg-white border border-pink-100 rounded-lg overflow-hidden hover:border-pink-300 hover:shadow-md transition-all group">
-              ${artwork
-                ? `<img src="${artwork}" alt="${track.name}" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform" loading="lazy" />`
-                : '<div class="w-full aspect-square bg-pink-100 flex items-center justify-center"><span class="text-pink-300 text-4xl">♪</span></div>'
-              }
-              <div class="p-4">
-                <h3 class="font-semibold truncate text-gray-800 lowercase">${track.name}</h3>
-                <p class="text-gray-600 text-sm truncate lowercase">${track.artist['#text']}</p>
-                ${playcount ? `<p class="text-pink-400 text-xs mt-1">${playcount} plays</p>` : ''}
-              </div>
-            </a>
-          `;
-        })
-        .join('');
-    } catch (error) {
-      console.error('Error fetching top tracks:', error);
-    }
-  }
-
-  async function fetchTopArtists() {
-    try {
-      const response = await fetch('/api/top-artists?limit=12&period=7day');
-      const artists = await response.json();
-
-      const container = document.getElementById('top-artists-container');
-      if (!container || !Array.isArray(artists)) return;
-
-      if (artists.length === 0) {
-        container.innerHTML = `
-          <div class="bg-pink-50 border border-pink-200 rounded-lg p-8 text-center col-span-full">
-            <p class="text-gray-600">no artists yet</p>
-            <p class="text-gray-500 text-sm mt-2">listen to some music and artists will appear here!</p>
-          </div>
-        `;
-        return;
-      }
-
-      container.innerHTML = artists
-        .map((artist) => {
-          const artwork = artist.image[2]?.['#text'] || artist.image[1]?.['#text'] || '';
-          const playcount = parseInt(artist.playcount).toLocaleString();
-          return `
-            <a href="${artist.url}" target="_blank" rel="noopener noreferrer" class="block bg-white border border-pink-100 rounded-lg overflow-hidden hover:border-pink-300 hover:shadow-md transition-all group">
-              ${artwork
-                ? `<img src="${artwork}" alt="${artist.name}" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform" loading="lazy" />`
-                : '<div class="w-full aspect-square bg-pink-100 flex items-center justify-center"><span class="text-pink-300 text-4xl">♪</span></div>'
-              }
-              <div class="p-4">
-                <h3 class="font-semibold truncate text-gray-800 lowercase">${artist.name}</h3>
-                <p class="text-pink-400 text-xs mt-1">${playcount} plays</p>
-              </div>
-            </a>
-          `;
-        })
-        .join('');
-    } catch (error) {
-      console.error('Error fetching top artists:', error);
-    }
-  }
-
-  // Fetch all data on load
   fetchNowPlaying();
-  fetchTopTracks();
-  fetchTopArtists();
-
-  // Refresh now playing every 30 seconds
   setInterval(fetchNowPlaying, 30000);
 </script>

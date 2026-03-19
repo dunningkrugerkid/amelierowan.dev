@@ -32,14 +32,6 @@
 			"dest": "_render"
 		},
 		{
-			"src": "^/api/top-artists/?$",
-			"dest": "_render"
-		},
-		{
-			"src": "^/api/top-tracks/?$",
-			"dest": "_render"
-		},
-		{
 			"src": "^/cat/?$",
 			"dest": "_render"
 		},

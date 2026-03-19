@@ -1,5 +1,4 @@
 import { $ } from 'zx';
-import { g as getRecentTracks } from './lastfm_C2kIyQ0v.mjs';
 
 async function getLocalNowPlaying() {
   if (process.platform !== "darwin") {
@@ -62,31 +61,11 @@ const GET = async () => {
         { status: 200, headers: { "Content-Type": "application/json" } }
       );
     }
-    const apiKey = "1e6ce2f42c08de643c35b35ce6ecaa21";
-    const username = "chickoftheseus";
-    if (!apiKey || !username) ;
-    const tracks = await getRecentTracks(apiKey, username, 1);
-    if (tracks && tracks.length > 0) {
-      const track = tracks[0];
-      const isNowPlaying = !track.date;
-      return new Response(
-        JSON.stringify({
-          source: "lastfm",
-          title: track.name,
-          artist: track.artist["#text"],
-          album: track.album?.["#text"] || "",
-          artwork: track.image[3]?.["#text"] || track.image[2]?.["#text"] || "",
-          url: track.url,
-          isPlaying: isNowPlaying
-        }),
-        { status: 200, headers: { "Content-Type": "application/json" } }
-      );
-    }
     return new Response(
       JSON.stringify({
         source: "none",
         isPlaying: false,
-        message: "no recent tracks found"
+        message: "no music playing"
       }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
