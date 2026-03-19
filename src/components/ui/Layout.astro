@@ -4,7 +4,7 @@ interface Props {
   description?: string;
 }
 
-const { title = 'Rowan', description = 'Personal website - music, code, and my cat' } = Astro.props;
+const { title = 'rowan', description = 'personal website - music, code, and cats' } = Astro.props;
 ---
 
 <!doctype html>
@@ -28,12 +28,12 @@ const { title = 'Rowan', description = 'Personal website - music, code, and my c
     <header class="border-b border-pink-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
       <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <a href="/" class="text-xl font-bold text-pink-600 hover:text-pink-500 transition-colors">
-          Rowan
+          rowan
         </a>
         <ul class="flex gap-6">
-          <li><a href="/music" class="text-gray-700 hover:text-pink-500 transition-colors">Music</a></li>
-          <li><a href="/cat" class="text-gray-700 hover:text-pink-500 transition-colors">Cat</a></li>
-          <li><a href="/about" class="text-gray-700 hover:text-pink-500 transition-colors">About</a></li>
+          <li><a href="/music" class="text-gray-700 hover:text-pink-500 transition-colors">music</a></li>
+          <li><a href="/cat" class="text-gray-700 hover:text-pink-500 transition-colors">cat</a></li>
+          <li><a href="/about" class="text-gray-700 hover:text-pink-500 transition-colors">about</a></li>
         </ul>
       </nav>
     </header>
