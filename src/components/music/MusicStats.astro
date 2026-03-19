@@ -4,23 +4,23 @@ import NowPlaying from './NowPlaying.astro';
 
 <div class="space-y-12">
   <section>
-    <h2 class="text-2xl font-semibold mb-4">Now Playing</h2>
+    <h2 class="text-2xl font-semibold mb-4 text-gray-800">Now Playing</h2>
     <div id="now-playing-container">
       <NowPlaying loading />
     </div>
   </section>
 
   <section>
-    <h2 class="text-2xl font-semibold mb-4">Top Tracks <span class="text-sm font-normal text-gray-500">(7 days)</span></h2>
+    <h2 class="text-2xl font-semibold mb-4 text-gray-800">Top Tracks <span class="text-sm font-normal text-pink-400">(7 days)</span></h2>
     <div id="top-tracks-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div class="bg-gray-100 rounded-lg p-8 text-center text-gray-500">Loading...</div>
+      <div class="bg-pink-50 border border-pink-100 rounded-lg p-8 text-center text-gray-500">Loading...</div>
     </div>
   </section>
 
   <section>
-    <h2 class="text-2xl font-semibold mb-4">Top Artists <span class="text-sm font-normal text-gray-500">(7 days)</span></h2>
+    <h2 class="text-2xl font-semibold mb-4 text-gray-800">Top Artists <span class="text-sm font-normal text-pink-400">(7 days)</span></h2>
     <div id="top-artists-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <div class="bg-gray-100 rounded-lg p-8 text-center text-gray-500">Loading...</div>
+      <div class="bg-pink-50 border border-pink-100 rounded-lg p-8 text-center text-gray-500">Loading...</div>
     </div>
   </section>
 </div>
@@ -45,19 +45,19 @@ import NowPlaying from './NowPlaying.astro';
       }
 
       container.innerHTML = `
-        <div class="bg-gray-50 rounded-lg p-6 flex flex-col md:flex-row gap-6 items-center">
+        <div class="bg-white border border-pink-100 rounded-lg p-6 flex flex-col md:flex-row gap-6 items-center shadow-sm">
           ${data.artwork
-          ? `<img src="${data.artwork}" alt="${data.title}" class="w-32 h-32 rounded object-cover flex-shrink-0" loading="lazy" />`
-          : '<div class="w-32 h-32 bg-gray-200 rounded flex items-center justify-center flex-shrink-0"><span class="text-gray-400 text-sm">No art</span></div>'
+          ? `<img src="${data.artwork}" alt="${data.title}" class="w-32 h-32 rounded object-cover flex-shrink-0 shadow-sm" loading="lazy" />`
+          : '<div class="w-32 h-32 bg-pink-100 rounded flex items-center justify-center flex-shrink-0"><span class="text-pink-300 text-sm">No art</span></div>'
         }
           <div class="flex-1 text-center md:text-left">
-            <h3 class="text-xl font-semibold mb-1">
-              <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="hover:underline">${data.title}</a>
+            <h3 class="text-xl font-semibold mb-1 text-gray-800">
+              <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="hover:text-pink-500 transition-colors">${data.title}</a>
             </h3>
             <p class="text-gray-600">${data.artist}</p>
             ${data.album ? `<p class="text-gray-500 text-sm">${data.album}</p>` : ''}
             ${data.isPlaying
-          ? '<span class="inline-flex items-center gap-1 mt-2 text-sm text-white bg-black px-2 py-1 rounded"><span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>Now Playing</span>'
+          ? '<span class="inline-flex items-center gap-1 mt-2 text-sm text-white bg-pink-400 px-2 py-1 rounded"><span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>Now Playing</span>'
           : ''
         }
           </div>
@@ -83,25 +83,19 @@ import NowPlaying from './NowPlaying.astro';
 
       container.innerHTML = tracks
         .map(
-          (track: {
-            name: string;
-            artist: { '#text': string };
-            image: { '#text': string }[];
-            playcount?: string;
-            url: string;
-          }) => {
+          (track) => {
             const artwork = track.image[2]?.['#text'] || track.image[1]?.['#text'] || '';
             const playcount = track.playcount ? parseInt(track.playcount).toLocaleString() : '';
             return `
-            <a href="${track.url}" target="_blank" rel="noopener noreferrer" class="block bg-gray-50 rounded-lg overflow-hidden hover:bg-gray-100 transition-colors group">
+            <a href="${track.url}" target="_blank" rel="noopener noreferrer" class="block bg-white border border-pink-100 rounded-lg overflow-hidden hover:border-pink-300 hover:shadow-md transition-all group">
               ${artwork
                 ? `<img src="${artwork}" alt="${track.name}" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform" loading="lazy" />`
-                : '<div class="w-full aspect-square bg-gray-200 flex items-center justify-center"><span class="text-gray-400 text-4xl">♪</span></div>'
+                : '<div class="w-full aspect-square bg-pink-100 flex items-center justify-center"><span class="text-pink-300 text-4xl">♪</span></div>'
               }
               <div class="p-4">
-                <h3 class="font-semibold truncate">${track.name}</h3>
+                <h3 class="font-semibold truncate text-gray-800">${track.name}</h3>
                 <p class="text-gray-600 text-sm truncate">${track.artist['#text']}</p>
-                ${playcount ? `<p class="text-gray-500 text-xs mt-1">${playcount} plays</p>` : ''}
+                ${playcount ? `<p class="text-pink-400 text-xs mt-1">${playcount} plays</p>` : ''}
               </div>
             </a>
           `;
@@ -128,18 +122,18 @@ import NowPlaying from './NowPlaying.astro';
 
       container.innerHTML = artists
         .map(
-          (artist: { name: string; playcount: string; image: { '#text': string }[]; url: string }) => {
+          (artist) => {
             const artwork = artist.image[2]?.['#text'] || artist.image[1]?.['#text'] || '';
             const playcount = parseInt(artist.playcount).toLocaleString();
             return `
-            <a href="${artist.url}" target="_blank" rel="noopener noreferrer" class="block bg-gray-50 rounded-lg overflow-hidden hover:bg-gray-100 transition-colors group">
+            <a href="${artist.url}" target="_blank" rel="noopener noreferrer" class="block bg-white border border-pink-100 rounded-lg overflow-hidden hover:border-pink-300 hover:shadow-md transition-all group">
               ${artwork
                 ? `<img src="${artwork}" alt="${artist.name}" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform" loading="lazy" />`
-                : '<div class="w-full aspect-square bg-gray-200 flex items-center justify-center"><span class="text-gray-400 text-4xl">♪</span></div>'
+                : '<div class="w-full aspect-square bg-pink-100 flex items-center justify-center"><span class="text-pink-300 text-4xl">♪</span></div>'
               }
               <div class="p-4">
-                <h3 class="font-semibold truncate">${artist.name}</h3>
-                <p class="text-gray-500 text-xs mt-1">${playcount} plays</p>
+                <h3 class="font-semibold truncate text-gray-800">${artist.name}</h3>
+                <p class="text-pink-400 text-xs mt-1">${playcount} plays</p>
               </div>
             </a>
           `;

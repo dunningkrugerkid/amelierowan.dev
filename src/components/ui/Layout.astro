@@ -24,16 +24,16 @@ const { title = 'Rowan', description = 'Personal website - music, code, and my c
     
     <title>{title}</title>
   </head>
-  <body>
-    <header class="border-b border-gray-200">
+  <body class="bg-pink-50">
+    <header class="border-b border-pink-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
       <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-        <a href="/" class="text-xl font-bold hover:text-gray-600 transition-colors">
+        <a href="/" class="text-xl font-bold text-pink-600 hover:text-pink-500 transition-colors">
           Rowan
         </a>
         <ul class="flex gap-6">
-          <li><a href="/music" class="hover:text-gray-600 transition-colors">Music</a></li>
-          <li><a href="/cat" class="hover:text-gray-600 transition-colors">Cat</a></li>
-          <li><a href="/about" class="hover:text-gray-600 transition-colors">About</a></li>
+          <li><a href="/music" class="text-gray-700 hover:text-pink-500 transition-colors">Music</a></li>
+          <li><a href="/cat" class="text-gray-700 hover:text-pink-500 transition-colors">Cat</a></li>
+          <li><a href="/about" class="text-gray-700 hover:text-pink-500 transition-colors">About</a></li>
         </ul>
       </nav>
     </header>
@@ -42,9 +42,9 @@ const { title = 'Rowan', description = 'Personal website - music, code, and my c
       <slot />
     </main>
     
-    <footer class="border-t border-gray-200 mt-16">
-      <div class="max-w-6xl mx-auto px-4 py-8 text-center text-gray-600">
-        <p>&copy; {new Date().getFullYear()} Rowan</p>
+    <footer class="border-t border-pink-200 mt-16 bg-white/50">
+      <div class="max-w-6xl mx-auto px-4 py-8 text-center text-gray-500">
+        <p>made with <span class="text-pink-400">♥</span> by rowan</p>
       </div>
     </footer>
   </body>

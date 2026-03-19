@@ -17,7 +17,7 @@ const displayPhotos = photos.slice(0, limit);
 
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
   {displayPhotos.map((photo) => (
-    <div class="aspect-square rounded-lg overflow-hidden bg-gray-100 group">
+    <div class="aspect-square rounded-lg overflow-hidden bg-pink-50 border border-pink-100 group hover:border-pink-300 transition-colors">
       {photo.url ? (
         <img
           src={photo.url}
@@ -26,8 +26,8 @@ const displayPhotos = photos.slice(0, limit);
           class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       ) : (
-        <div class="w-full h-full flex items-center justify-center group-hover:bg-gray-200 transition-colors">
-          <span class="text-gray-400">{photo.alt}</span>
+        <div class="w-full h-full flex items-center justify-center group-hover:bg-pink-100 transition-colors">
+          <span class="text-pink-300">{photo.alt}</span>
         </div>
       )}
     </div>
