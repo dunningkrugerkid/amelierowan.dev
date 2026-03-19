@@ -1,9 +1,9 @@
 import { v2 } from 'cloudinary';
 
 v2.config({
-  cloud_name: "your_cloud_name",
-  api_key: "your_api_key",
-  api_secret: "your_api_secret",
+  cloud_name: "drhm07pfj",
+  api_key: "751795974128863",
+  api_secret: "vWzhXicGKLvdvOGWJwaNPvPCip8",
   secure: true
 });
 async function getCatPhotos(limit = 20) {
@@ -26,7 +26,7 @@ async function getCatPhotos(limit = 20) {
 
 const GET = async ({ url }) => {
   try {
-    const cloudName = "your_cloud_name";
+    const cloudName = "drhm07pfj";
     if (!cloudName) ;
     const limit = parseInt(url.searchParams.get("limit") || "20");
     const photos = await getCatPhotos(limit);

@@ -1,8 +1,8 @@
-import { c as createComponent } from './astro-component_C4ecrRZu.mjs';
+import { c as createComponent } from './astro-component_DfX6KPoh.mjs';
 import 'piccolore';
-import { m as maybeRenderHead, r as renderTemplate, h as addAttribute, l as renderComponent, n as Fragment } from './entrypoint_EyPBh7p7.mjs';
-import { $ as $$Layout } from './Layout_DP8js5N1.mjs';
-import { r as renderScript } from './script_BLIihV2y.mjs';
+import { m as maybeRenderHead, r as renderTemplate, h as addAttribute, l as renderComponent, n as Fragment } from './entrypoint_D7DLjsAF.mjs';
+import { $ as $$Layout } from './Layout_DMnWiYgO.mjs';
+import { r as renderScript } from './script_jlZoKnuA.mjs';
 
 const $$NowPlaying = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$props, $$slots);
@@ -22,12 +22,12 @@ Now Playing
 }, "/Users/rowan/amelierowan.dev/src/components/music/NowPlaying.astro", void 0);
 
 const $$MusicStats = createComponent(async ($$result, $$props, $$slots) => {
-  return renderTemplate`${maybeRenderHead()}<div class="space-y-12"> <section> <h2 class="text-2xl font-semibold mb-4">Now Playing</h2> <div id="now-playing-container"> ${renderComponent($$result, "NowPlaying", $$NowPlaying, { "loading": true })} </div> </section> <section> <h2 class="text-2xl font-semibold mb-4">Top Tracks <span class="text-sm font-normal text-gray-500">(7 days)</span></h2> <div id="top-tracks-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> <div class="bg-gray-100 rounded-lg p-8 text-center text-gray-500">Loading...</div> </div> </section> <section> <h2 class="text-2xl font-semibold mb-4">Top Artists <span class="text-sm font-normal text-gray-500">(7 days)</span></h2> <div id="top-artists-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> <div class="bg-gray-100 rounded-lg p-8 text-center text-gray-500">Loading...</div> </div> </section> </div> ${renderScript($$result, "/Users/rowan/amelierowan.dev/src/components/music/MusicStats.astro?astro&type=script&index=0&lang.ts")}`;
+  return renderTemplate`${maybeRenderHead()}<div class="space-y-12"> <section> <h2 class="text-2xl font-semibold mb-4 text-gray-800">now playing</h2> <div id="now-playing-container"> ${renderComponent($$result, "NowPlaying", $$NowPlaying, { "loading": true })} </div> </section> <section> <h2 class="text-2xl font-semibold mb-4 text-gray-800">top tracks <span class="text-sm font-normal text-pink-400">(7 days)</span></h2> <div id="top-tracks-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> <div class="bg-pink-50 border border-pink-100 rounded-lg p-8 text-center text-gray-500 col-span-full animate-pulse">loading...</div> </div> </section> <section> <h2 class="text-2xl font-semibold mb-4 text-gray-800">top artists <span class="text-sm font-normal text-pink-400">(7 days)</span></h2> <div id="top-artists-container" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> <div class="bg-pink-50 border border-pink-100 rounded-lg p-8 text-center text-gray-500 col-span-full animate-pulse">loading...</div> </div> </section> </div> ${renderScript($$result, "/Users/rowan/amelierowan.dev/src/components/music/MusicStats.astro?astro&type=script&index=0&lang.ts")}`;
 }, "/Users/rowan/amelierowan.dev/src/components/music/MusicStats.astro", void 0);
 
 const $$Music = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "Music | Rowan" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="max-w-6xl mx-auto px-4 py-8"> <h1 class="text-4xl font-bold mb-4">Music</h1> <p class="text-gray-600 mb-8">
-What I've been listening to lately
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "music | rowan" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<main class="max-w-6xl mx-auto px-4 py-8"> <h1 class="text-4xl font-bold mb-2 text-gray-800">music</h1> <p class="text-gray-600 mb-8">
+what i've been listening to lately
 </p> ${renderComponent($$result2, "MusicStats", $$MusicStats, { "client:load": true, "client:component-hydration": "load", "client:component-path": "/Users/rowan/amelierowan.dev/src/components/music/MusicStats.astro", "client:component-export": "default" })} </main> ` })}`;
 }, "/Users/rowan/amelierowan.dev/src/pages/music.astro", void 0);
 

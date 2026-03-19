@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.2.2",
     "astro": "^6.0.7",
     "cloudinary": "^2.9.0",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.2.2",
+    "zx": "^8.8.5"
   }
 }
