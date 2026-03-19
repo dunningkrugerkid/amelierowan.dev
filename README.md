@@ -1,43 +1,89 @@
-# Astro Starter Kit: Minimal
+# amelierowan.dev
 
-```sh
-npm create astro@latest -- --template minimal
+Personal website for Rowan - music, code, and cats.
+
+## Tech Stack
+
+- **Framework**: [Astro](https://astro.build/) 6.x
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) v4
+- **Deployment**: [Vercel](https://vercel.com/)
+- **Music Data**: [Last.fm API](https://www.last.fm/api)
+- **Images**: [Cloudinary](https://cloudinary.com/)
+
+## Features
+
+- **Music Integration**: Displays top tracks and artists from Last.fm
+- **NowPlaying Widget**: Shows what's currently playing (Last.fm)
+- **Cat Gallery**: Photo gallery powered by Cloudinary
+- **Responsive Design**: Mobile-first with Tailwind CSS
+- **Server-Side Rendering**: Vercel adapter for SSR
+
+## Project Structure
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
 ├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/
+│   │   ├── content/       # Content components (About, CatGallery)
+│   │   ├── music/         # Music components (NowPlaying, TopTracks)
+│   │   └── ui/            # UI components (Layout)
+│   ├── lib/
+│   │   ├── cloudinary.ts  # Cloudinary helper functions
+│   │   ├── config.ts      # Site configuration
+│   │   └── lastfm.ts      # Last.fm API client
+│   ├── pages/
+│   │   ├── api/           # API endpoints
+│   │   ├── about.astro
+│   │   ├── cat.astro
+│   │   ├── index.astro
+│   │   └── music.astro
+│   └── styles/
+│       └── global.css
+├── astro.config.mjs
+├── tailwind.config.mjs
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Environment Variables
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Copy `.env.example` to `.env` and fill in your values:
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+# Last.fm
+PUBLIC_LAST_FM_API_KEY=your_last_fm_api_key
+LAST_FM_SECRET=your_last_fm_secret
+PUBLIC_LAST_FM_USERNAME=your_last_fm_username
 
-## 🧞 Commands
+# Cloudinary
+PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
 
-All commands are run from the root of the project, from a terminal:
+### Getting Credentials
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. **Last.fm**: Create an API account at https://www.last.fm/api/account/create
+2. **Cloudinary**: Sign up at https://cloudinary.com and get credentials from dashboard
 
-## 👀 Want to learn more?
+## Commands
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Command | Action |
+|:--------|:-------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start dev server at `localhost:4321` |
+| `npm run build` | Build for production to `./dist/` |
+| `npm run preview` | Preview production build locally |
+
+## Deployment
+
+Push to GitHub and connect to Vercel. Set environment variables in Vercel dashboard.
+
+## Adding Cat Photos
+
+1. Upload photos to Cloudinary in the `cat-photos` folder
+2. They'll automatically appear on the /cat page
+
+## License
+
+MIT
