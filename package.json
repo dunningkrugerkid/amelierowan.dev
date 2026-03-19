@@ -1,5 +1,5 @@
 {
-  "name": "astro-temp",
+  "name": "shaggy-star",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -12,6 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.0.7"
+    "@astrojs/vercel": "^10.0.2",
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.0.7",
+    "tailwindcss": "^4.2.2"
   }
 }
