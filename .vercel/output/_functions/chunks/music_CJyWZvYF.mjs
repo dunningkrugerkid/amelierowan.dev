@@ -1,21 +1,8 @@
-import { c as createComponent } from './astro-component_CM2WGPh_.mjs';
+import { c as createComponent } from './astro-component_C4ecrRZu.mjs';
 import 'piccolore';
-import { n as createRenderInstruction, m as maybeRenderHead, r as renderTemplate, h as addAttribute, l as renderComponent, o as Fragment } from './entrypoint_D27yDQgx.mjs';
-import { $ as $$Layout } from './Layout_BUZMFOna.mjs';
-
-async function renderScript(result, id) {
-  const inlined = result.inlinedScripts.get(id);
-  let content = "";
-  if (inlined != null) {
-    if (inlined) {
-      content = `<script type="module">${inlined}</script>`;
-    }
-  } else {
-    const resolved = await result.resolve(id);
-    content = `<script type="module" src="${result.userAssetsBase ? (result.base === "/" ? "" : result.base) + result.userAssetsBase : ""}${resolved}"></script>`;
-  }
-  return createRenderInstruction({ type: "script", id, content });
-}
+import { m as maybeRenderHead, r as renderTemplate, h as addAttribute, l as renderComponent, n as Fragment } from './entrypoint_EyPBh7p7.mjs';
+import { $ as $$Layout } from './Layout_DP8js5N1.mjs';
+import { r as renderScript } from './script_BLIihV2y.mjs';
 
 const $$NowPlaying = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$props, $$slots);

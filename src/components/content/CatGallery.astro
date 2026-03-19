@@ -1,0 +1,35 @@
+---
+import { getCloudinaryUrl } from '../../lib/cloudinary';
+
+interface Props {
+  photos?: Array<{
+    publicId: string;
+    url: string;
+    alt: string;
+  }>;
+  limit?: number;
+}
+
+const { photos = [], limit = Infinity } = Astro.props;
+
+const displayPhotos = photos.slice(0, limit);
+---
+
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+  {displayPhotos.map((photo) => (
+    <div class="aspect-square rounded-lg overflow-hidden bg-gray-100 group">
+      {photo.url ? (
+        <img
+          src={photo.url}
+          alt={photo.alt}
+          loading="lazy"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+      ) : (
+        <div class="w-full h-full flex items-center justify-center group-hover:bg-gray-200 transition-colors">
+          <span class="text-gray-400">{photo.alt}</span>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
